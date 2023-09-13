@@ -1,7 +1,4 @@
 export default function Index() {
-  return (
-    <div>
-      <h1>Index Page</h1>
-    </div>
-  );
+  const APP_API_URL = import.meta.env.VITE_API_URL;
+  return <div>API URL: {APP_API_URL}</div>;
 }
