@@ -1,12 +1,12 @@
 import "./App.css";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 import { Routes, Route } from "react-router-dom";
+import routes, { RouteConfig } from "./router";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="*" element={<NotFound />} />
+      {routes.map((route: RouteConfig, index: number) => (
+        <Route key={index} path={route.path} element={<route.component />} />
+      ))}
     </Routes>
   );
 }

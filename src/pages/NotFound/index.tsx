@@ -2,7 +2,7 @@ import { Button, Result } from "antd";
 import { useNavigate } from "react-router-dom";
 
 //返回首页
-export default function NotFoundPage() {
+export default function NotFound() {
   let navigate = useNavigate();
   return (
     <Result
