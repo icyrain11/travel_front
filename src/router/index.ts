@@ -8,6 +8,10 @@ const routes: RouteConfig[] = [
     component: Index,
   },
   {
+    path: "/panorama",
+    component: lazy(() => import("../pages/Panorama")),
+  },
+  {
     path: "*",
     component: lazy(() => import("../pages/NotFound")),
   },
