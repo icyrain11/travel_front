@@ -1,7 +1,7 @@
 import { Button, Result } from "antd";
 import { useNavigate } from "react-router-dom";
 
-//返回首页
+//404 NotFound
 export default function NotFound() {
   let navigate = useNavigate();
   return (

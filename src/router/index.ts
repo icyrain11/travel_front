@@ -1,11 +1,6 @@
 import { lazy } from "react";
 import Index from "../pages/Index";
-
-//react 路由配置类型
-export type RouteConfig = {
-  path: string;
-  component: React.ComponentType;
-};
+import { RouteConfig } from "./type";
 
 const routes: RouteConfig[] = [
   {
