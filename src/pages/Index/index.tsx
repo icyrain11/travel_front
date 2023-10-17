@@ -1,7 +1,7 @@
 import { MouseEventHandler, useState } from "react";
 import "./index.css";
 import React from "react";
-import { Sequence } from "three/examples/jsm/libs/tween.module.js";
+
 
 export default function Index() {
   return (
