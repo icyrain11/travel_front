@@ -1,6 +1,7 @@
 import { MouseEventHandler, useState } from "react";
 import "./index.css";
 import React from "react";
+import { Sequence } from "three/examples/jsm/libs/tween.module.js";
 
 export default function Index() {
   return (
@@ -26,17 +27,37 @@ function Square({ value, onSquareClick }: SquareProps): React.ReactElement {
 }
 
 function Board(): React.ReactElement {
-  const [squares, setSquares] = useState(Array(9).fill(""));
+  //useState
+  const [xIsNext, setXIsNext] = useState(true);
+  const [squares, setSquares] = useState(Array(9).fill(null));
+
+  //获胜者
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = "Winner: " + winner;
+  } else {
+    status = "Next player: " + (xIsNext ? "X" : "O");
+  }
 
   //处理点击事件
   function handleSquareClick(index: number) {
-    const nextSquare = squares.slice();
-    nextSquare[index] = "X";
-    setSquares(nextSquare);
+    if (squares[index] || calculateWinner(squares)) {
+      return;
+    }
+    const nextSquares = squares.slice();
+    if (xIsNext) {
+      nextSquares[index] = "X";
+    } else {
+      nextSquares[index] = "O";
+    }
+    setSquares(nextSquares);
+    setXIsNext(!xIsNext);
   }
 
   return (
     <>
+      <div className="status">{status}</div>
       <div className="board-row">
         <Square
           value={squares[0]}
@@ -81,4 +102,25 @@ function Board(): React.ReactElement {
       </div>
     </>
   );
+}
+
+function calculateWinner(squares: Array<string>) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [x, y, z] = lines[i];
+    if (squares[x] && squares[x] === squares[y] && squares[x] === squares[z]) {
+      return squares[x];
+    }
+  }
+
+  return null;
 }
