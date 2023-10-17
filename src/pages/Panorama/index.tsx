@@ -1,12 +1,14 @@
 import { Canvas, useLoader } from "@react-three/fiber";
-import { TextureLoader } from "three/src/loaders/TextureLoader.ts";
+import { useParams } from "react-router";
 
 function Panorama() {
+  //获取路径参数id
+  const { id } = useParams<{ id: string }>();
   //别报错了哥求你了
-//   const texture = useLoader(TextureLoader, "/path/to/texture.jpg");
 
   return (
     <div id="canvas-container">
+      <div>路径参数ID{id}</div>
       <Canvas>
         <mesh>
           <boxGeometry />

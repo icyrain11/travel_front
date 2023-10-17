@@ -1,6 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import routes, { RouteConfig } from "./router";
+import routes from "./router";
+import { RouteConfig } from "./router/type";
 function App() {
   return (
     <Routes>
@@ -10,5 +11,6 @@ function App() {
     </Routes>
   );
 }
+
 
 export default App;
